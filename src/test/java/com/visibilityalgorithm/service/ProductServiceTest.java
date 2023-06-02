@@ -1,10 +1,13 @@
 package com.visibilityalgorithm.service;
 
-import org.junit.jupiter.api.Assertions;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.mockito.Mockito.when;
+
+import java.util.List;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
-import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
 
 import com.utils.Fixtures;
@@ -12,15 +15,8 @@ import com.visibilityalgorithm.integration.dto.ProductDTO;
 import com.visibilityalgorithm.integration.entity.ProductEntity;
 import com.visibilityalgorithm.integration.mapper.ProductMapper;
 import com.visibilityalgorithm.integration.repository.ProductRepository;
-
-import java.util.Arrays;
-import java.util.List;
-
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
-import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.ArgumentMatchers.eq;
-import static org.mockito.Mockito.when;
+import com.visibilityalgorithm.service.impl.ProductFilter;
+import com.visibilityalgorithm.service.impl.ProductServiceImpl;
 
 public class ProductServiceTest {
 
@@ -33,12 +29,12 @@ public class ProductServiceTest {
     @Mock
     private ProductFilter productFilter;
 
-    private ProductService productService;
+    private ProductServiceImpl productService;
 
     @BeforeEach
     public void setup() {
         MockitoAnnotations.openMocks(this);
-        productService = new ProductService(productRepository, productMapper, productFilter);
+        productService = new ProductServiceImpl(productRepository, productMapper, productFilter);
     }
 
     @Test

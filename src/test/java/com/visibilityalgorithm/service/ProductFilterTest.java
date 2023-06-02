@@ -7,6 +7,7 @@ import org.junit.jupiter.api.Test;
 import com.visibilityalgorithm.integration.dto.ProductDTO;
 import com.visibilityalgorithm.integration.dto.SizeDTO;
 import com.visibilityalgorithm.integration.dto.StockDTO;
+import com.visibilityalgorithm.service.impl.ProductFilter;
 
 import java.util.Arrays;
 import java.util.Collections;

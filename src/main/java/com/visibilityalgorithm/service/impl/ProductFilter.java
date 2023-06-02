@@ -1,4 +1,4 @@
-package com.visibilityalgorithm.service;
+package com.visibilityalgorithm.service.impl;
 
 import java.util.List;
 import java.util.stream.Collectors;
