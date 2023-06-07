@@ -5,31 +5,37 @@ import static org.mockito.Mockito.when;
 
 import java.util.List;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
-import org.springframework.boot.test.mock.mockito.MockBean;
-import org.springframework.test.context.junit.jupiter.SpringJUnitConfig;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.Mock;
+import org.mockito.junit.jupiter.MockitoExtension;
 
 import com.utils.Fixtures;
 import com.visibilityalgorithm.integration.dto.ProductDTO;
 import com.visibilityalgorithm.service.ProductService;
 
-@SpringJUnitConfig
-@WebMvcTest(ProductController.class)
-public class ProductControllerTest {    
-
-    @MockBean
+@ExtendWith(MockitoExtension.class)
+class ProductControllerTest {    
+    
+    @Mock
     private ProductService productService;
+
+    private ProductController productController;
+    
+    @BeforeEach
+    void beforeEach(){
+        productController = new ProductController(productService);
+    }
+
     @Test
-    public void testGetVisibleProducts() throws Exception {
+    void testGetVisibleProducts(){
 
-        // Given
+        // Given        
         List<ProductDTO> expectedProducts = Fixtures.getList(ProductDTO.class, 3);
-
         when(productService.getVisibleProducts()).thenReturn(expectedProducts);
 
-        // When
-        ProductController productController = new ProductController(productService);
+        // When        
         List<ProductDTO> response = productController.getVisibleProducts();
 
         // Then

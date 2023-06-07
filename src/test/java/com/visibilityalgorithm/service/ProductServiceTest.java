@@ -7,8 +7,9 @@ import java.util.List;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
-import org.mockito.MockitoAnnotations;
+import org.mockito.junit.jupiter.MockitoExtension;
 
 import com.utils.Fixtures;
 import com.visibilityalgorithm.integration.dto.ProductDTO;
@@ -18,7 +19,8 @@ import com.visibilityalgorithm.integration.repository.ProductRepository;
 import com.visibilityalgorithm.service.impl.ProductFilter;
 import com.visibilityalgorithm.service.impl.ProductServiceImpl;
 
-public class ProductServiceTest {
+@ExtendWith(MockitoExtension.class)
+class ProductServiceTest {
 
     @Mock
     private ProductRepository productRepository;
@@ -32,13 +34,12 @@ public class ProductServiceTest {
     private ProductServiceImpl productService;
 
     @BeforeEach
-    public void setup() {
-        MockitoAnnotations.openMocks(this);
+    void setup() {        
         productService = new ProductServiceImpl(productRepository, productMapper, productFilter);
     }
 
     @Test
-    public void testGetVisibleProducts() {
+    void testGetVisibleProducts() {
         // Given
         List<ProductEntity> products = Fixtures.getList(ProductEntity.class, 3);
         

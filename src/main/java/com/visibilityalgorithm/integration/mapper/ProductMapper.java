@@ -16,9 +16,12 @@ import com.visibilityalgorithm.integration.entity.StockEntity;
 
 @Component
 public class ProductMapper {
-
-    @Autowired
+    
     private ModelMapper modelMapper;
+
+    public ProductMapper(ModelMapper modelMapper){
+        this.modelMapper = modelMapper;
+    }
 
     public ProductDTO toDto(ProductEntity productEntity) {
         ProductDTO productDTO = modelMapper.map(productEntity, ProductDTO.class);

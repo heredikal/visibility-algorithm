@@ -3,6 +3,8 @@ package com.visibilityalgorithm.service;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.junit.jupiter.MockitoExtension;
 
 import com.visibilityalgorithm.integration.dto.ProductDTO;
 import com.visibilityalgorithm.integration.dto.SizeDTO;
@@ -13,12 +15,13 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
-public class ProductFilterTest {
+@ExtendWith(MockitoExtension.class)
+class ProductFilterTest {
 
     private final ProductFilter productFilter = new ProductFilter();
 
     @Test
-    public void testToFilterProductDTOs() {
+    void testToFilterProductDTOs() {
         // Given
         List<ProductDTO> products = Arrays.asList(
                 createProductDTO(1, Collections.singletonList(createSizeDTO(true, Collections.singletonList(createStockDTO(true))))),
