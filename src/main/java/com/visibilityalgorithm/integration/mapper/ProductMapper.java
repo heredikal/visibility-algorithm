@@ -4,7 +4,6 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import org.modelmapper.ModelMapper;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import com.visibilityalgorithm.integration.dto.ProductDTO;
@@ -16,10 +15,10 @@ import com.visibilityalgorithm.integration.entity.StockEntity;
 
 @Component
 public class ProductMapper {
-    
+
     private ModelMapper modelMapper;
 
-    public ProductMapper(ModelMapper modelMapper){
+    public ProductMapper(ModelMapper modelMapper) {
         this.modelMapper = modelMapper;
     }
 
@@ -39,8 +38,6 @@ public class ProductMapper {
 
     public StockDTO toDto(StockEntity stockEntity) {
         return modelMapper.map(stockEntity, StockDTO.class);
-        
-        
     }
 
 }
